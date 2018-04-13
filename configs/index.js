@@ -60,6 +60,9 @@ const Config = (env) => {
       redisSocketPath: {
         redisSocketPath: envMode.redisSocketPath,
       },
+      rootDirPath: {
+        rootDirPath: envMode.rootDirPath,
+      }
     },
     validation: {
       validateNameFormat: serviceNameFormatValidation,

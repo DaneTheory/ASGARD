@@ -57,6 +57,7 @@
     "danetheory"
   ],
   "dependencies": {
+    "@mh-cbon/sudo-fs": "^1.0.17",
     "async-error-catcher": "^1.2.0",
     "axios": "^0.16.2",
     "babel-cli": "^6.26.0",
@@ -92,15 +93,20 @@
     "jwt-simple": "0.5.1",
     "lodash": "^4.17.4",
     "method-override": "^2.3.8",
+    "mkdirp": "^0.5.1",
     "moment-timezone": "^0.5.14",
     "mongoose": "^4.9.7",
     "mongoose-unique-validator": "^2.0.0",
     "mongoose-validator": "^2.0.2",
     "morgan": "^1.9.0",
+    "node-cmd": "^3.0.0",
+    "node-run-cmd": "^1.0.1",
     "passport": "^0.4.0",
     "passport-http-bearer": "^1.0.1",
     "passport-jwt": "3.0.0",
     "pm2": "^2.4.6",
+    "sudo": "^1.0.3",
+    "sudo-prompt": "^8.2.0",
     "uuid": "^3.1.0",
     "winston": "^2.0.0"
   },

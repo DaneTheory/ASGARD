@@ -38,7 +38,7 @@ const HydraConfigOptions = {
           // serviceName: config.get('name'),
           toConsole: true,
           // noFile: true,
-          logPath: `./logs/services/${config.get('name').toUpperCase()}/Hydra/RawEventDataLog.json`,
+          logPath: `./logs/services/Hydra/RawEventDataLog.json`,
           // "elasticsearch": {
           //   "host": "localhost",
           //   "port": 9200,

@@ -12,7 +12,8 @@ const DefaultAppConfig = () => {
       jwtSecretConfig,
       jwtExpirationConfig,
       dbConfig,
-      redisConfig
+      redisConfig,
+      pathConfig;
 
   const config = convict({
     env: {
@@ -163,6 +164,14 @@ const DefaultAppConfig = () => {
         format: String,
         default: config.load(globalConfig.envDependency.redisSocketPath),
       }
+    }
+  }
+  pathConfig = {
+    rootDirPath: {
+      doc: `Application Root Directory Path`,
+      env: `APP_ROOT_PATH`,
+      format: '*',
+      default: config.load(globalConfig.envDependency.rootDirPath),
     }
   }
 

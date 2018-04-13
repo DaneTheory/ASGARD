@@ -1,3 +1,6 @@
+import path from 'path'
+
+
 const EnvDependency = (env, serviceName) => {
   let ip, // eslint-disable-line one-var
     port,
@@ -9,7 +12,8 @@ const EnvDependency = (env, serviceName) => {
     redisPort,
     redisID,
     redisUrl,
-    redisSocketPath;
+    redisSocketPath,
+    rootDirPath;
 
   if (env === 'development') {
     ip = '127.0.0.1';
@@ -23,6 +27,7 @@ const EnvDependency = (env, serviceName) => {
     redisID = 1;
     redisUrl = `redis://${ip}:${redisPort}/${redisID}`;
     redisSocketPath = '/tmp/redis.sock'; // TODO: Determine and test correct working path to Socket Server instance
+    rootDirPath = path.resolve(__dirname, '../', './')
   }
 
   return {
@@ -37,6 +42,7 @@ const EnvDependency = (env, serviceName) => {
     redisID,
     redisUrl,
     redisSocketPath,
+    rootDirPath
   };
 };
 
