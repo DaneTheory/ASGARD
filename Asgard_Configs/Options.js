@@ -3,12 +3,15 @@ import DefaultAppConfig from '../DefaultAppConfig'
 
 const config = DefaultAppConfig()
 
+const userDefinedFullPathToMediaDirRoot = `/Users/Nietzsche/Documents/demo`
+
 const Options = {
-  primaryStoragePath: '',
-  primaryVideoDirPath: '',
-  primaryMusicDirPath: '',
-  primaryPhotosDirPath: '',
-  primaryGamesDirPath: '',
+  primaryMediaPath: null,
+  // primaryMediaPath: `${userDefinedFullPathToMediaDirRoot}/MEDIA`,
+  // primaryVideoDirPath: '',
+  // primaryMusicDirPath: '',
+  // primaryPhotosDirPath: '',
+  // primaryGamesDirPath: '',
 }
 
 
