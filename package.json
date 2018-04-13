@@ -1,0 +1,177 @@
+{
+  "name": "asgard",
+  "version": "1.0.0",
+  "description": "A microservice providing a full media center/NAS experience, minus any of the frills. Use what client you prefer! Asgrad provides a restful microservice powered by websockets, HTTP methods, and IoC. For engineers who need a solid reliable choice in starting a new media based project.",
+  "author": "Branden Dane <danetheory@gmail.com>",
+  "main": "src/index.js",
+  "private": false,
+  "license": "MIT",
+  "engines": {
+    "node": ">=9.7",
+    "yarn": "*"
+  },
+  "scripts": {
+    "precommit": "yarn lint",
+    "prestart": "yarn docs",
+    "start": "cross-env NODE_ENV=production pm2 start ./src/index.js",
+    "dev": "cross-env NODE_ENV=development nodemon ./src/index.js --exec \"node -r dotenv/config -r babel-register\"",
+    "lint": "eslint **/*.js --ignore-path .gitignore --ignore-pattern internals/scripts",
+    "lint:fix": "yarn lint -- --fix",
+    "lint:watch": "yarn lint -- --watch",
+    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha --timeout 20000 --recursive src/api/tests",
+    "test:unit": "cross-env NODE_ENV=test mocha src/api/tests/unit",
+    "test:integration": "cross-env NODE_ENV=test mocha --timeout 20000 src/api/tests/integration",
+    "test:watch": "cross-env NODE_ENV=test mocha --watch src/api/tests/unit",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "postcoverage": "opn coverage/lcov-report/index.html",
+    "validate": "yarn lint && yarn test",
+    "postpublish": "git push --tags",
+    "deploy": "sh ./deploy.sh",
+    "docs": "apidoc -i src -o docs",
+    "postdocs": "opn docs/index.html",
+    "docker:start": "cross-env NODE_ENV=production pm2-docker start ./src/index.js",
+    "docker:prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up",
+    "docker:dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up",
+    "docker:test": "docker-compose -f docker-compose.yml -f docker-compose.test.yml up --abort-on-container-exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:danetheory/asgard.git"
+  },
+  "keywords": [
+    "asgard",
+    "hydra",
+    "microservice",
+    "express",
+    "node",
+    "node.js",
+    "es6",
+    "es7",
+    "es8",
+    "es2017",
+    "Travis CI",
+    "coveralls",
+    "REST",
+    "API",
+    "IOT",
+    "danetheory"
+  ],
+  "dependencies": {
+    "async-error-catcher": "^1.2.0",
+    "axios": "^0.16.2",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "bcryptjs": "2.4.3",
+    "better-console": "^1.0.1",
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.0",
+    "compression": "^1.6.2",
+    "convict": "^4.0.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.3",
+    "cross-env": "^5.1.4",
+    "debug": "^3.1.0",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "express-favicon-short-circuit": "^1.1.1",
+    "express-mongoose": "^0.1.0",
+    "express-subdomain": "^1.0.5",
+    "express-validation": "^1.0.2",
+    "express-winston": "^2.0.0",
+    "fwsp-logger": "^0.3.3",
+    "helmet": "^3.5.0",
+    "http-status": "^1.0.1",
+    "http-status-codes": "^1.3.0",
+    "hydra": "^1.6.4",
+    "hydra-express": "^1.6.7",
+    "hydra-integration": "^1.0.2",
+    "joi": "^10.4.1",
+    "jsonwebtoken": "^8.2.0",
+    "jwt-simple": "0.5.1",
+    "lodash": "^4.17.4",
+    "method-override": "^2.3.8",
+    "moment-timezone": "^0.5.14",
+    "mongoose": "^4.9.7",
+    "mongoose-unique-validator": "^2.0.0",
+    "mongoose-validator": "^2.0.2",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-http-bearer": "^1.0.1",
+    "passport-jwt": "3.0.0",
+    "pm2": "^2.4.6",
+    "uuid": "^3.1.0",
+    "winston": "^2.0.0"
+  },
+  "devDependencies": {
+    "apidoc": "^0.17.5",
+    "babel-eslint": "^8.0.3",
+    "babel-jest": "^21.2.0",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.0",
+    "chai-as-promised": "^7.1.1",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.12.1",
+    "eslint-config-airbnb-base": "^12.0.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.3.2",
+    "eslint-watch": "^3.1.3",
+    "jest": "^21.2.1",
+    "mocha": "^3.3.0",
+    "nodemon": "^1.12.1",
+    "nyc": "^11.0.3",
+    "opn-cli": "^3.1.0",
+    "sinon": "^4.0.1",
+    "sinon-chai": "^2.10.0",
+    "supertest": "^3.0.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "transform-object-rest-spread",
+      "transform-class-properties"
+    ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "import",
+      "jest"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2017,
+      "sourceType": "module"
+    },
+    "env": {
+      "node": true,
+      "jest": true
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "rules": {
+      "jest/no-focused-tests": 2,
+      "jest/no-identical-title": 2
+    }
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "bugs": {
+    "url": "https://github.com/danetheory/asgard/issues"
+  },
+  "homepage": "https://github.com/danetheory/asgard#readme",
+  "directories": {
+    "test": "test"
+  }
+}
